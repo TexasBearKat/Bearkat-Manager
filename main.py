@@ -3,40 +3,58 @@ import random
 from cryptography.fernet import Fernet
 import os
 # import father
+
+# -------- ENCRYPTION ---------
+
+# Writes key after checking whether or not there is a key
 def write_key():
     key = Fernet.generate_key()
-    if  os.path.isfile("key.key"):
+# Checks if key.key is a file
+    if os.path.isfile("key.key"):
         pass
     else:
         with open ("key.key", "wb") as key_file:
             key_file.write(key)
 
+# Reads key.key file for key
 def load_key():
     with open ("key.key", "r") as key_file:
         return key_file.read()
+
 
 write_key()
 key = load_key()
 
 
+# Encrypts the file using Fernet and the key
 def encrypt(filename, key):
     f = Fernet(key)
+# Creates a fernet object using the key
     with open(filename, "r") as file:
         file_data = file.read()
+# Encodes the data into bytes then encrypts it
     encoded_data = file_data.encode("utf-8")
     encrypted_data = f.encrypt(encoded_data)
+# Write back into file
     with open (filename, "wb") as file:
         file.write(encrypted_data)
 
+
+# Decrypts file using Fernet and the key
 def decrypt(filename, key):
     f = Fernet(key)
     with open(filename, "r") as file:
         encrypted_data = file.read()
-    decrypted_data = f.decrypt(encrypted_data)
+# Same process as encryption but decrypts instead of encrypts
+    encoded_data = encrypted_data.encode("utf-8")
+    decrypted_data = f.decrypt(encoded_data)
     with open (filename, "wb") as file:
         file.write(decrypted_data)
 
+# Decrypt passwords.txt with your generated key
 decrypt("passwords.txt", key)
+
+# ------ MAIN PROGRAM --------------
 
 # Creates password using the SHA-256 algorithm
 def create_password(phrase):
@@ -44,6 +62,8 @@ def create_password(phrase):
     pw = hashlib.sha256()
     pw.update(phrase)
     return pw.hexdigest()
+
+
 # Gets the passwords of an inputted site
 def get_password(site):
 # Opens passwords.txt and looks through lines for site
@@ -52,6 +72,8 @@ def get_password(site):
         for line in pw_file:
             if site in line:
                 return line
+
+
 # Adds a site to passwords.txt
 def add_site (site, email, password):
 # Checks if inputted password is set to autogenerate
@@ -75,19 +97,25 @@ cpw - Create Password, asks for password
 gpw - Get Password, gets password and email with site name
 q - Quit, quits
 help - Opens help menu
+*** MAKE SURE NOT TO ADD ARGS ***
         """)
 
+# ------- COMMANDS ----------
+
 while True:
-    c = input(">")
+    c = input("PM>> ")
 # Create Password
+
     if c == "cpw":
         password = input("Enter phrase: ")
         print(create_password(password))
 # Get Password
+
     elif c == "gpw":
         site = input("Site name: ")
         print(get_password(site))
 # Add site
+
     elif c == "as":
         url = input("Site name: ")
         email = input("Email: ")
@@ -95,10 +123,12 @@ while True:
         add_site(url, email, passw)
 # Validates site was added
         if get_password(url) != None:
-            print(f"Added site '{url}' successfully" )
+            print(f"Added site '{url}' successfully")
+            print(f"Password is {get_password(url)}")
         else:
             print("Error, site not added")
 # Help menu
+
     elif c == "help":
         print("""
 as - Add site, asks for site name, email, and password
@@ -108,9 +138,12 @@ q - Quit, quits
 help - Opens help menu
         """)
 # Quit
+
     elif c == "q":
         print("Goodbye")
         input("\n--| PRESS ENTER TO QUIT |--")
         break
 
+
+# Encrypt the file when the program is closed
 encrypt("passwords.txt", key)
