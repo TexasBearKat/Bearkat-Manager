@@ -22,5 +22,6 @@ def load_key():
     with open ("key.key", "r") as key_file:
         return key_file.read()
 
+write_key()
 key = load_key()
 encrypt("passwords.txt", key)
