@@ -54,7 +54,7 @@ def decrypt(filename, key):
 # Decrypt passwords.txt with your generated key
 decrypt("passwords.txt", key)
 
-# ------ MAIN PROGRAM --------------
+# ------ MAIN FUNCTIONS --------------
 
 # Creates password using the SHA-256 algorithm
 def create_password(phrase):
