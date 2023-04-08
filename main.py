@@ -1,6 +1,42 @@
 import hashlib
 import random
+from cryptography.fernet import Fernet
+import os
 # import father
+def write_key():
+    key = Fernet.generate_key()
+    if  os.path.isfile("key.key"):
+        pass
+    else:
+        with open ("key.key", "wb") as key_file:
+            key_file.write(key)
+
+def load_key():
+    with open ("key.key", "r") as key_file:
+        return key_file.read()
+
+write_key()
+key = load_key()
+
+
+def encrypt(filename, key):
+    f = Fernet(key)
+    with open(filename, "r") as file:
+        file_data = file.read()
+    encoded_data = file_data.encode("utf-8")
+    encrypted_data = f.encrypt(encoded_data)
+    with open (filename, "wb") as file:
+        file.write(encrypted_data)
+
+def decrypt(filename, key):
+    f = Fernet(key)
+    with open(filename, "r") as file:
+        encrypted_data = file.read()
+    decrypted_data = f.decrypt(encrypted_data)
+    with open (filename, "wb") as file:
+        file.write(decrypted_data)
+
+decrypt("passwords.txt", key)
 
 # Creates password using the SHA-256 algorithm
 def create_password(phrase):
@@ -29,6 +65,9 @@ def add_site (site, email, password):
 # Don't touch, might explode       (no guarantees)
     with open("passwords.txt", "a") as f:
         f.write(f"\n{site} | {email} | {password}")
+
+
+
 # Prints help menu
 print("""
 as - Add site, asks for site name, email, and password
@@ -73,3 +112,5 @@ help - Opens help menu
         print("Goodbye")
         input("\n--| PRESS ENTER TO QUIT |--")
         break
+
+encrypt("passwords.txt", key)
