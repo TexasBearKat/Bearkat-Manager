@@ -1,13 +1,9 @@
 from cryptography.fernet import Fernet
-import os
 
 def write_key():
     key = Fernet.generate_key()
-    if  os.path.isfile("key.key"):
-        pass
-    else:
-        with open ("key.key", "wb") as key_file:
-            key_file.write(key)
+    with open ("key.key", "wb") as key_file:
+        key_file.write(key)
 
 def encrypt(filename, key):
     f = Fernet(key)
