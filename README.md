@@ -10,7 +10,7 @@ Ran some passwords through [security.org](www.security.org/):
 3. Phrase - SHA-256 | Time: 85 million quadragintillion years (8.5 * 10^131 years)
 As we can see from these results, there is an obvious trend in how much time it takes to crack these passwords, which is **very long.**
 
-# Guide
+# Guide (WINDOWS)
 1. Download the zipped release file
 2. Unzip it to a folder
 3. Make sure key.key does not exist and passwords.txt is not encrypted
@@ -23,4 +23,17 @@ As we can see from these results, there is an obvious trend in how much time it 
 8. Run main.py
 9. Validate by typing in "gpw" then "site"; it should return with "site | email | password"
 
-Thank you for using my code
+# Guide (LINUX)
+1. git clone https://github.com/TexasBearKat/Password-Manager-WIP.git
+2. cd Password-Manager-WIP
+3. python3 startup.py
+4. ls (check for key.key)
+5. python3 main.py
+
+# Common Errors
+cryptography.fernet.invalidToken Error:
+de-encrypt the passwords.txt file if you care about your passwords, I will eventually include one in the install
+delete key.key
+python3 startup.py
+You should have a new key and everything should work again
+(I have no clue why this happens so this is more of a bandaid fix)
