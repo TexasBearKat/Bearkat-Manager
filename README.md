@@ -13,9 +13,7 @@ As we can see from these results, there is an obvious trend in how much time it 
 # Guide (WINDOWS)
 1. Download the zipped release file
 2. Unzip it to a folder
-3. Make sure key.key does not exist and passwords.txt is not encrypted
-3.1 If key.key exists delete it
-3.2 If passwords.txt is encrypted then delete everything in the file
+3. Make sure key.key does not exist and passwords.txt is not encrypted, if either are true just delete key.key and everything inside passwords.txt
 4. Click on top bar where it shows path
 5. Type in "cmd"
 6. Type "python3 startup.py"
