@@ -56,13 +56,42 @@ decrypt("passwords.txt", key)
 
 # ------ MAIN FUNCTIONS --------------
 
+def capitalize_every_other(string):
+    result = ""
+    prev_char_cap = False
+    for char in string:
+        if prev_char_cap:
+            result = result + char.lower()
+        else:
+            result = result + char.upper()
+        prev_char_cap = not prev_char_cap
+    return result
+
+def add_symbols(string):
+    result = ""
+    nums = ['3','6','9',]
+    for char in string:
+        if char in nums:
+            if char == "3":
+                result = result + "--"
+            if char == "6":
+                result = result + "--_"
+            if char == "9":
+                result = result + "-__-"
+        result = result + char
+    return result
+
 # Creates password using the SHA-256 algorithm
 def create_password(phrase):
     phrase = phrase.encode("utf-8")
     pw = hashlib.sha256()
     pw.update(phrase)
-    return pw.hexdigest()
-
+    hexpw = pw.hexdigest()
+    cappw = capitalize_every_other(hexpw)
+    sympw = add_symbols(cappw)
+    if len(sympw) > 79:
+        sympw = sympw[0:79]
+    return sympw
 
 # Gets the passwords of an inputted site
 def get_password(site):
