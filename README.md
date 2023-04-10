@@ -22,7 +22,7 @@ As we can see from these results, there is an obvious trend in how much time it 
 9. Validate by typing in "gpw" then "site"; it should return with "site | email | password"
 
 # Guide (LINUX)
-1. git clone https://github.com/TexasBearKat/Password-Manager-WIP.git
+1. git clone https://github.com/TexasBearKat/Bearkat-Manager.git
 2. cd Password-Manager-WIP
 3. python3 startup.py
 4. ls (check for key.key)
