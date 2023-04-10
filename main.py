@@ -59,6 +59,7 @@ decrypt("passwords.txt", key)
 def capitalize_every_other(string):
     result = ""
     prev_char_cap = False
+# For character in string, if the last one was uppercase then make this one lowercase. ELse, make it uppercase
     for char in string:
         if prev_char_cap:
             result = result + char.lower()
@@ -70,6 +71,7 @@ def capitalize_every_other(string):
 def add_symbols(string):
     result = ""
     nums = ['3','6','9',]
+# Looks through characters and if they are in nums then apply changes to result.
     for char in string:
         if char in nums:
             if char == "3":
