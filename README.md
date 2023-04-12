@@ -54,5 +54,5 @@ To fix this, just rerun startup.py:
 `python3 startup.py`
 
 Credits:
-TexasBearKat - Sole contributor and owner
+TexasBearKat - Sole contributor and owner  
 GooseiverseIndex - Moral support and funny comment man
