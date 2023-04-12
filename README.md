@@ -21,9 +21,11 @@ As we can see from these results, there is an obvious trend in how much time it 
 2. Install python cryptography package `pip install cryptography`
 3. Excract zip file
 4. On the top bar (where the path is), click it and type cmd, press enter
-5. Type in ```
+5. Type in 
+```
 python3 startup.py
-python3 main.py ```  
+python3 main.py
+```  
 6. Check for key.key, if it isn't there rerun `python3 startup.py`
 7. You should now have it up and running
 
