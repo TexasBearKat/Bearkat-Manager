@@ -7,7 +7,7 @@ Encrypts the text file using "cryptography.fernet" and a randomly generated key.
 Ran some passwords through [security.org](www.security.org/):
 1. Phrase - github-is-awesome | Time: 85 million quadragintillion years (8.5 * 10<sup>131</sup> years)
 2. Phrase - texasbearkat | Time: 85 million quadragintillion years (8.5 * 10<sup>131</sup> years)
-3. Phrase - SHA-256 | Time: 85 million quadragintillion years (8.5 * 10<sup>131</sup> years)
+3. Phrase - SHA-256 | Time: 85 million quadragintillion years (8.5 * 10<sup>131</sup> years)  
 As we can see from these results, there is an obvious trend in how much time it takes to crack these passwords, which is **very long.**
 
 ### Todo
