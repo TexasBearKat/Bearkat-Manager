@@ -5,9 +5,9 @@ Works using the python library "hashlib" and encrypts passwords using the SHA-25
 Encrypts the text file using "cryptography.fernet" and a randomly generated key.
 
 Ran some passwords through [security.org](www.security.org/):
-1. Phrase - github-is-awesome | Time: 85 million quadragintillion years (8.5 * 10^131 years)
-2. Phrase - texasbearkat | Time: 85 million quadragintillion years (8.5 * 10^131 years)
-3. Phrase - SHA-256 | Time: 85 million quadragintillion years (8.5 * 10^131 years)
+1. Phrase - github-is-awesome | Time: 85 million quadragintillion years (8.5 * 10<sup>131</sup> years)
+2. Phrase - texasbearkat | Time: 85 million quadragintillion years (8.5 * 10<sup>131</sup> years)
+3. Phrase - SHA-256 | Time: 85 million quadragintillion years (8.5 * 10<sup>131</sup> years)
 As we can see from these results, there is an obvious trend in how much time it takes to crack these passwords, which is **very long.**
 
 ### Todo
@@ -18,26 +18,39 @@ As we can see from these results, there is an obvious trend in how much time it 
 
 ## Guide (WINDOWS)
 1. Download the zipped release file
-2. Unzip it to a folder
-3. Make sure key.key does not exist and passwords.txt is not encrypted, if either are true just delete key.key and everything inside passwords.txt
-4. Click on top bar where it shows path
-5. Type in "cmd"
-6. Type "python3 startup.py"
-7. Check key.key for a key and that passwords.txt is encrypted
-8. Run main.py
-9. Validate by typing in "gpw" then "site"; it should return with "site | email | password"
+2. Install python cryptography package `pip install cryptography`
+3. Excract zip file
+4. On the top bar (where the path is), click it and type cmd, press enter
+5. Type in ```
+python3 startup.py
+python3 main.py ```  
+6. Check for key.key, if it isn't there rerun `python3 startup.py`
+7. You should now have it up and running
 
 ## Guide (LINUX)
-1. git clone https://github.com/TexasBearKat/Bearkat-Manager.git
-2. cd Password-Manager-WIP
-3. python3 startup.py
-4. ls (check for key.key)
-5. python3 main.py
+1. Access command line
+2. cd into whatever directory you want the folder in
+3. Run this:
+```
+$ pip install cryptography
+$ git clone https://github.com/TexasBearKat/Bearkat-Manager.git
+$ cd Bearkat-Manager
+$ python3 startup.py
+$ python3 main.py
+```
+It should be started up and working.
+
+## Guide (REPL.IT)
+1. Make a new python repl
+2. Go to the shell tab (Do this by clicking the + button and searching "Shell")
+3. Follow linux guide
 
 ## Common Errors
 cryptography.fernet.invalidToken Error:
-de-encrypt the passwords.txt file if you care about your passwords, I will eventually include one in the install
-delete key.key
-python3 startup.py
-You should have a new key and everything should work again
-(I have no clue why this happens so this is more of a bandaid fix)
+This happens when the main.py program shuts down unexpectedly, and causes the passwords.txt file to go unencrypted.
+To fix this, just rerun startup.py:
+`python3 startup.py`
+
+Credits:
+TexasBearKat - Sole contributor and owner
+GooseiverseIndex - Moral support and funny comment man
